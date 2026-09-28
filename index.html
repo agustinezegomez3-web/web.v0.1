@@ -5,25 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ARMOIN | Consultora de E-commerce y Diseño</title>
     
-    <!-- Tipografía Geist de Google Fonts -->
+    <!-- Tipografía Geist de Google Fonts (Perfecta para el estilo Vercel) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
-        /* --- Variables de Color y Diseño --- */
+        /* --- Variables de Color y Diseño (Estilo Vercel / Dark Mode) --- */
         :root {
-            --azul-oscuro: #0a2540;   
-            --azul-medio: #1456a6;    
-            --azul-claro: #f0f4f8;    
-            --blanco: #ffffff;
-            --negro: #111111;
-            --gris-texto: #4a4a4a;
+            --bg-main: #050505;       /* Negro profundo */
+            --bg-card: #0e0e0e;       /* Gris muy oscuro para tarjetas */
+            --border-color: rgba(255, 255, 255, 0.08); /* Bordes sutiles */
+            --text-main: #ededed;     /* Blanco suave */
+            --text-muted: #888888;    /* Gris para párrafos */
+            --accent: #3b82f6;        /* Azul eléctrico moderno */
+            --accent-glow: rgba(59, 130, 246, 0.15);
             
-            /* Variables para Glassmorphism */
-            --glass-bg: rgba(255, 255, 255, 0.85);
-            --glass-border: rgba(255, 255, 255, 0.3);
-            --glass-shadow: 0 8px 32px 0 rgba(10, 37, 64, 0.05);
+            /* Glassmorphism oscuro */
+            --glass-bg: rgba(10, 10, 10, 0.6);
+            --glass-border: rgba(255, 255, 255, 0.05);
         }
 
         /* --- Reseteo básico y Scroll Suave --- */
@@ -39,17 +39,26 @@
 
         body {
             font-family: 'Geist', sans-serif;
-            color: var(--negro);
-            background-color: var(--blanco);
+            color: var(--text-main);
+            background-color: var(--bg-main);
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
+            
+            /* Patrón de puntos de fondo muy sutil (estilo tech) */
+            background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 32px 32px;
+        }
+
+        ::selection {
+            background-color: var(--accent);
+            color: #fff;
         }
 
         /* --- Utilidades --- */
         .container {
             width: 100%;
-            max-width: 1200px;
+            max-width: 1100px;
             margin: 0 auto;
             padding: 0 24px;
         }
@@ -60,82 +69,76 @@
             align-items: center;
             justify-content: center;
             text-decoration: none;
-            padding: 16px 36px;
-            border-radius: 50px; /* Bordes más redondeados tipo píldora */
-            font-size: 1.125rem;
-            font-weight: 600;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            padding: 14px 32px;
+            border-radius: 99px; /* Píldora */
+            font-size: 1.05rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
             cursor: pointer;
-            border: none;
-            position: relative;
-            overflow: hidden;
+            border: 1px solid transparent;
         }
 
-        .btn-azul {
-            background-color: var(--azul-medio);
-            color: var(--blanco);
-            box-shadow: 0 4px 15px rgba(20, 86, 166, 0.3);
+        .btn-primario {
+            background-color: #ededed;
+            color: #050505;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
         }
 
-        .btn-azul:hover {
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 8px 25px rgba(20, 86, 166, 0.4);
-            background-color: #124d94;
+        .btn-primario:hover {
+            transform: scale(1.02);
+            background-color: #ffffff;
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
         }
 
-        .btn-blanco {
-            background-color: var(--blanco);
-            color: var(--azul-oscuro);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        .btn-secundario {
+            background-color: rgba(255, 255, 255, 0.03);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+            backdrop-filter: blur(10px);
         }
 
-        .btn-blanco:hover {
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        .btn-secundario:hover {
+            background-color: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.2);
         }
 
-        .navbar {
+        /* --- Navbar Flotante tipo píldora --- */
+        .navbar-wrapper {
             position: fixed;
-            top: 0;
+            top: 24px;
             left: 0;
             width: 100%;
             z-index: 1000;
-            padding: 20px 0;
-            background: var(--glass-bg);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--glass-border);
-            box-shadow: var(--glass-shadow);
-            transition: padding 0.3s ease;
+            display: flex;
+            justify-content: center;
+            padding: 0 24px;
         }
 
-        .navbar .container {
+        .navbar {
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            padding: 12px 32px;
+            border-radius: 99px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
             display: flex;
             justify-content: space-between;
             align-items: center;
+            transition: all 0.3s ease;
         }
 
         .nav-logo {
-            font-size: 1.5rem;
+            font-size: 1.25rem;
             font-weight: 700;
-            color: var(--azul-oscuro);
+            color: var(--text-main);
             text-decoration: none;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
         }
 
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
+        /* --- Hero Section --- */
         .hero {
-            /* Gradiente animado sutil */
-            background: linear-gradient(-45deg, #f0f4f8, #ffffff, #e6edf5, #f8fafc);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
-            
-            padding: 180px 0 120px 0;
+            padding: 220px 0 120px 0;
             text-align: center;
             display: flex;
             flex-direction: column;
@@ -145,213 +148,235 @@
             position: relative;
         }
 
+        /* Brillo de fondo central */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, var(--accent-glow) 0%, rgba(0,0,0,0) 70%);
+            z-index: -1;
+            filter: blur(60px);
+            pointer-events: none;
+        }
+
         .slogan {
             display: inline-block;
-            background: rgba(20, 86, 166, 0.1);
-            color: var(--azul-medio);
+            background: rgba(255, 255, 255, 0.03);
+            color: var(--text-muted);
             padding: 8px 16px;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            font-weight: 700;
+            border-radius: 99px;
+            border: 1px solid var(--border-color);
+            font-size: 0.85rem;
+            font-weight: 500;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 24px;
+            letter-spacing: 1.5px;
+            margin-bottom: 32px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
 
         .hero h1 {
-            font-size: clamp(2.5rem, 5vw, 4.5rem);
-            color: var(--azul-oscuro);
-            line-height: 1.1;
+            font-size: clamp(3rem, 6vw, 5.5rem);
+            line-height: 1.05;
             font-weight: 700;
             margin-bottom: 24px;
             max-width: 900px;
-            letter-spacing: -1px;
+            letter-spacing: -0.04em;
+            
+            /* Texto con gradiente tipo Apple/Vercel */
+            background: linear-gradient(180deg, #ffffff 0%, #a1a1aa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
         }
 
         .hero p {
             font-size: 1.25rem;
-            color: var(--gris-texto);
-            margin-bottom: 40px;
-            max-width: 700px;
-            line-height: 1.7;
+            color: var(--text-muted);
+            margin-bottom: 48px;
+            max-width: 650px;
+            line-height: 1.6;
+            font-weight: 300;
         }
 
+        /* --- Servicios (Estilo Bento Grid) --- */
         .servicios {
-            padding: 120px 0;
-            background-color: var(--blanco);
+            padding: 100px 0;
             position: relative;
+            z-index: 2;
         }
 
         .servicios h2 {
-            text-align: center;
             font-size: clamp(2rem, 4vw, 3rem);
-            color: var(--azul-oscuro);
             margin-bottom: 60px;
-            font-weight: 700;
-            letter-spacing: -0.5px;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            text-align: center;
         }
 
         .grid-servicios {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
         }
 
         .card {
-            background-color: var(--blanco);
-            border: 1px solid #edf2f7;
-            border-radius: 20px;
-            padding: 50px 40px;
-            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 24px; /* Bordes más redondeados tipo app */
+            padding: 40px;
+            transition: all 0.4s ease;
             position: relative;
-            z-index: 1;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
         }
 
-        /* Efecto Glow en Hover */
-        .card:hover {
-            transform: translateY(-15px);
-            border-color: rgba(20, 86, 166, 0.2);
-            box-shadow: 0 25px 50px -12px rgba(20, 86, 166, 0.15), 0 0 40px rgba(20, 86, 166, 0.05);
-        }
-
-        /* Brillo sutil (Shine effect) pasando por encima de la tarjeta */
+        /* Efecto de brillo interior (Glow) al pasar el mouse */
         .card::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: -100%;
-            width: 50%;
-            height: 100%;
-            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(20, 86, 166, 0.05) 50%, rgba(255,255,255,0) 100%);
-            transform: skewX(-25deg);
-            transition: all 0.7s ease;
-            z-index: -1;
+            top: 0; left: 0; right: 0; bottom: 0;
+            border-radius: 24px;
+            background: radial-gradient(800px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255, 255, 255, 0.06), transparent 40%);
+            opacity: 0;
+            transition: opacity 0.4s;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .card:hover {
+            border-color: rgba(255, 255, 255, 0.15);
+            transform: translateY(-5px);
         }
 
         .card:hover::before {
-            left: 200%;
+            opacity: 1;
+        }
+
+        .card > * {
+            position: relative;
+            z-index: 1;
         }
 
         .card-icon {
-            font-size: 3rem;
+            font-size: 2.5rem;
             margin-bottom: 24px;
-            display: inline-block;
-            transition: transform 0.3s ease;
-        }
-
-        .card:hover .card-icon {
-            transform: scale(1.1) rotate(-5deg);
+            background: rgba(255, 255, 255, 0.03);
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
         }
 
         .card h3 {
-            font-size: 1.5rem;
-            color: var(--azul-oscuro);
+            font-size: 1.35rem;
+            color: var(--text-main);
             margin-bottom: 16px;
-            font-weight: 700;
+            font-weight: 600;
+            letter-spacing: -0.01em;
         }
 
         .card p {
-            color: var(--gris-texto);
-            font-size: 1.1rem;
+            color: var(--text-muted);
+            font-size: 1.05rem;
             line-height: 1.6;
+            font-weight: 300;
         }
 
+        /* --- Llamado a la Acción (CTA) --- */
         .cta {
-            background: linear-gradient(135deg, var(--azul-oscuro) 0%, #0d3660 100%);
             padding: 120px 0;
+            position: relative;
+        }
+
+        .cta-box {
+            background: linear-gradient(145deg, #111 0%, #050505 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 32px;
+            padding: 80px 40px;
             text-align: center;
-            color: var(--blanco);
             position: relative;
             overflow: hidden;
         }
 
-        .cta::after {
+        /* Brillo sutil en el CTA */
+        .cta-box::after {
             content: '';
             position: absolute;
-            width: 400px;
-            height: 400px;
-            background: rgba(255,255,255,0.05);
+            top: -50%; right: -20%;
+            width: 400px; height: 400px;
+            background: var(--accent-glow);
+            filter: blur(80px);
             border-radius: 50%;
-            top: -100px;
-            right: -100px;
-            filter: blur(50px);
+            pointer-events: none;
         }
 
-        .cta h2 {
+        .cta-box h2 {
             font-size: clamp(2rem, 4vw, 3rem);
-            margin-bottom: 24px;
+            margin-bottom: 20px;
             font-weight: 700;
-            position: relative;
-            z-index: 2;
+            letter-spacing: -0.03em;
         }
 
-        .cta p {
-            font-size: 1.25rem;
+        .cta-box p {
+            font-size: 1.15rem;
+            color: var(--text-muted);
             margin-bottom: 40px;
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
-            color: #e2e8f0;
-            position: relative;
-            z-index: 2;
+            font-weight: 300;
         }
 
+        /* --- Footer --- */
         .footer {
-            background-color: var(--negro);
-            color: var(--blanco);
+            border-top: 1px solid var(--border-color);
             padding: 60px 0;
             text-align: center;
-        }
-
-        .footer-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 16px;
+            background: var(--bg-main);
         }
 
         .footer-brand {
             font-size: 1.5rem;
             font-weight: 700;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+            color: var(--text-main);
+        }
+
+        .footer p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 8px;
         }
 
         .footer a {
-            color: var(--azul-claro);
+            color: var(--text-main);
             text-decoration: none;
             transition: color 0.3s ease;
             font-weight: 500;
-            position: relative;
-        }
-
-        .footer a::after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            transform: scaleX(0);
-            height: 2px;
-            bottom: -2px;
-            left: 0;
-            background-color: var(--blanco);
-            transform-origin: bottom right;
-            transition: transform 0.3s ease-out;
-        }
-
-        .footer a:hover::after {
-            transform: scaleX(1);
-            transform-origin: bottom left;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            padding-bottom: 2px;
         }
 
         .footer a:hover {
-            color: var(--blanco);
+            color: var(--accent);
+            border-color: var(--accent);
         }
 
+        /* --- Animaciones de aparición --- */
         .fade-in-up {
             opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
 
         .fade-in-up.visible {
@@ -359,36 +384,36 @@
             transform: translateY(0);
         }
 
-        /* Retrasos escalonados para las tarjetas */
         .delay-1 { transition-delay: 0.1s; }
-        .delay-2 { transition-delay: 0.3s; }
-        .delay-3 { transition-delay: 0.5s; }
+        .delay-2 { transition-delay: 0.2s; }
+        .delay-3 { transition-delay: 0.3s; }
 
         /* --- Responsive --- */
         @media (max-width: 768px) {
-            .hero { padding: 160px 0 80px 0; }
+            .hero { padding: 180px 0 80px 0; }
             .hero p { font-size: 1.1rem; }
-            .servicios { padding: 80px 0; }
-            .cta { padding: 80px 0; }
-            .btn { width: 100%; }
-            .navbar { padding: 15px 0; }
+            .cta-box { padding: 60px 24px; border-radius: 24px; }
+            .grid-servicios { grid-template-columns: 1fr; }
+            .btn { width: 100%; margin-bottom: 16px; }
+            .navbar-wrapper { padding: 0 16px; top: 16px; }
+            .navbar { width: 100%; justify-content: center; } /* Centramos el logo en móvil */
         }
     </style>
 </head>
 <body>
 
-    <nav class="navbar">
-        <div class="container">
+    <div class="navbar-wrapper">
+        <nav class="navbar">
             <a href="#" class="nav-logo">ARMOIN</a>
-        </div>
-    </nav>
+        </nav>
+    </div>
 
     <section class="hero">
         <div class="container fade-in-up">
             <span class="slogan">Tu partner de confianza</span>
             <h1>Hacé crecer tu negocio en el mundo digital sin complicaciones</h1>
             <p>Sabemos que dar el salto digital o destrabar tus ventas puede ser un desafío. Desde Córdoba Capital te acompañamos con estrategias claras para que logres vender más y llegar a tu cliente ideal.</p>
-            <a href="https://wa.me/5493584403369?text=Hola%20ARMOIN!%20Vengo%20de%20la%20web%20y%20quiero%20hacer%20crecer%20mi%20negocio." class="btn btn-azul" target="_blank" rel="noopener noreferrer">
+            <a href="https://wa.me/5493510000000?text=Hola%20ARMOIN!%20Vengo%20de%20la%20web%20y%20quiero%20hacer%20crecer%20mi%20negocio." class="btn btn-primario" target="_blank" rel="noopener noreferrer">
                 Escribinos por WhatsApp
             </a>
         </div>
@@ -407,13 +432,13 @@
 
                 <div class="card fade-in-up delay-2">
                     <div class="card-icon">📈</div>
-                    <h3>Configuración de Anuncios (SEM)</h3>
+                    <h3>Configuración de Anuncios</h3>
                     <p>Optimizamos tu presupuesto publicitario. Armamos y gestionamos campañas en Google y redes sociales para que aparezcas justo cuando tu público objetivo busca lo que ofrecés.</p>
                 </div>
 
                 <div class="card fade-in-up delay-3">
                     <div class="card-icon">📱</div>
-                    <h3>Edición de contenido para redes</h3>
+                    <h3>Edición de contenido</h3>
                     <p>Potenciamos la imagen de tu marca. Editamos piezas gráficas y audiovisuales profesionales que conectan con tu audiencia y te diferencian de la competencia.</p>
                 </div>
 
@@ -423,16 +448,18 @@
 
     <section class="cta">
         <div class="container fade-in-up">
-            <h2>Trabajemos en equipo</h2>
-            <p>Creemos en la atención 100% personalizada. Escuchamos tus necesidades, analizamos tu negocio y creamos un plan de acción a tu medida. ¿Listo para dar el próximo paso?</p>
-            <a href="https://wa.me/5493510000000?text=Hola!%20Me%20interesa%20tener%20una%20reunión%20para%20trabajar%20juntos." class="btn btn-blanco" style="position:relative; z-index:2;" target="_blank" rel="noopener noreferrer">
-                Contactanos por WhatsApp
-            </a>
+            <div class="cta-box">
+                <h2>Trabajemos en equipo</h2>
+                <p>Creemos en la atención 100% personalizada. Escuchamos tus necesidades, analizamos tu negocio y creamos un plan de acción a tu medida. ¿Listo para dar el próximo paso?</p>
+                <a href="https://wa.me/5493510000000?text=Hola!%20Me%20interesa%20tener%20una%20reunión%20para%20trabajar%20juntos." class="btn btn-secundario" target="_blank" rel="noopener noreferrer">
+                    Contactanos por WhatsApp
+                </a>
+            </div>
         </div>
     </section>
 
     <footer class="footer">
-        <div class="container footer-content fade-in-up">
+        <div class="container fade-in-up">
             <div class="footer-brand">ARMOIN</div>
             <p>Consultora de E-commerce y Diseño en Córdoba Capital</p>
             <p>Seguinos en <a href="https://instagram.com/armoin" target="_blank" rel="noopener noreferrer">Instagram</a></p>
@@ -441,21 +468,21 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            // Animación en la barra de navegación al scrollear
+            // Animación de Scroll para la Navbar (hace que se encoja sutilmente)
             const navbar = document.querySelector('.navbar');
             window.addEventListener('scroll', () => {
                 if (window.scrollY > 50) {
-                    navbar.style.padding = '15px 0';
-                    navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+                    navbar.style.padding = '10px 24px';
+                    navbar.style.background = 'rgba(5, 5, 5, 0.8)';
                 } else {
-                    navbar.style.padding = '20px 0';
-                    navbar.style.background = 'rgba(255, 255, 255, 0.85)';
+                    navbar.style.padding = '12px 32px';
+                    navbar.style.background = 'var(--glass-bg)';
                 }
             });
 
-            // Intersection Observer para revelar elementos (Fade in y deslizar arriba)
+            // Intersection Observer (Para el efecto fade-in al scrollear)
             const observerOptions = {
-                threshold: 0.15, // Ejecutar cuando el 15% del elemento es visible
+                threshold: 0.1,
                 rootMargin: "0px 0px -50px 0px" 
             };
 
@@ -463,16 +490,25 @@
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('visible');
-                        // Dejamos de observar el elemento una vez que ya apareció
                         observer.unobserve(entry.target); 
                     }
                 });
             }, observerOptions);
 
-            // Seleccionamos todos los elementos con la clase fade-in-up y los observamos
             const animElements = document.querySelectorAll('.fade-in-up');
             animElements.forEach((el) => {
                 observer.observe(el);
+            });
+
+            // Efecto Spotlight (Brillo que sigue al mouse en las tarjetas)
+            document.querySelectorAll('.card').forEach(card => {
+                card.addEventListener('mousemove', e => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    card.style.setProperty('--mouse-x', `${x}px`);
+                    card.style.setProperty('--mouse-y', `${y}px`);
+                });
             });
         });
     </script>
