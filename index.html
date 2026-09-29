@@ -5,105 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ARMOIN | Consultora de E-commerce y Diseño</title>
     
-    <!-- Tipografía Geist de Google Fonts (Perfecta para el estilo Vercel) -->
+    <!-- Tipografías: Oswald para los títulos gigantes y Geist para lectura -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
 
     <style>
-        /* --- Variables de Color y Diseño (Estilo Vercel / Dark Mode) --- */
         :root {
-            --bg-main: #050505;       /* Negro profundo */
-            --bg-card: #0e0e0e;       /* Gris muy oscuro para tarjetas */
-            --border-color: rgba(255, 255, 255, 0.08); /* Bordes sutiles */
-            --text-main: #ededed;     /* Blanco suave */
-            --text-muted: #888888;    /* Gris para párrafos */
-            --accent: #3b82f6;        /* Azul eléctrico moderno */
-            --accent-glow: rgba(59, 130, 246, 0.15);
-            
-            /* Glassmorphism oscuro */
-            --glass-bg: rgba(10, 10, 10, 0.6);
-            --glass-border: rgba(255, 255, 255, 0.05);
+            --bg-color: #f8f9fa; /* Fondo muy claro casi blanco */
+            --text-dark: #0a0e17; /* Azul muy oscuro casi negro */
+            --text-blue: #3258a8; /* Azul principal (para el H1) */
+            --text-gray: #64748b;
+            --white: #ffffff;
+            --border-color: #e2e8f0;
         }
 
-        /* --- Reseteo básico y Scroll Suave --- */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
-
         body {
             font-family: 'Geist', sans-serif;
-            color: var(--text-main);
-            background-color: var(--bg-main);
+            background-color: var(--bg-color);
+            color: var(--text-dark);
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
-            
-            /* Patrón de puntos de fondo muy sutil (estilo tech) */
-            background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-            background-size: 32px 32px;
         }
 
-        ::selection {
-            background-color: var(--accent);
-            color: #fff;
-        }
-
-        /* --- Utilidades --- */
-        .container {
-            width: 100%;
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        /* --- Botones --- */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            padding: 14px 32px;
-            border-radius: 99px; /* Píldora */
-            font-size: 1.05rem;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            border: 1px solid transparent;
-        }
-
-        .btn-primario {
-            background-color: #ededed;
-            color: #050505;
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
-        }
-
-        .btn-primario:hover {
-            transform: scale(1.02);
-            background-color: #ffffff;
-            box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
-        }
-
-        .btn-secundario {
-            background-color: rgba(255, 255, 255, 0.03);
-            color: var(--text-main);
-            border: 1px solid var(--border-color);
-            backdrop-filter: blur(10px);
-        }
-
-        .btn-secundario:hover {
-            background-color: rgba(255, 255, 255, 0.08);
-            border-color: rgba(255, 255, 255, 0.2);
-        }
-
-        /* --- Navbar Flotante tipo píldora --- */
-        .navbar-wrapper {
+        /* --- Navbar (Header Flotante) --- */
+        .header-wrapper {
             position: fixed;
             top: 24px;
             left: 0;
@@ -115,402 +48,368 @@
         }
 
         .navbar {
-            background: var(--glass-bg);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid var(--glass-border);
+            background-color: var(--white);
             padding: 12px 32px;
-            border-radius: 99px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            border-radius: 100px;
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            transition: all 0.3s ease;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 1000px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0,0,0,0.02);
         }
 
         .nav-logo {
             font-size: 1.25rem;
             font-weight: 700;
-            color: var(--text-main);
+            color: var(--text-dark);
             text-decoration: none;
-            letter-spacing: 0.5px;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #71717a;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-dark);
+        }
+
+        .nav-status {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            background: #f1f5f9;
+            padding: 6px 16px;
+            border-radius: 100px;
+            color: var(--text-dark);
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #10b981; /* Verde esmeralda */
+            border-radius: 50%;
+            display: inline-block;
+            box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
         }
 
         /* --- Hero Section --- */
         .hero {
-            padding: 220px 0 120px 0;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
+            padding: 180px 40px 80px;
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
             align-items: center;
             min-height: 100vh;
-            position: relative;
         }
 
-        /* Brillo de fondo central */
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 30%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, var(--accent-glow) 0%, rgba(0,0,0,0) 70%);
-            z-index: -1;
-            filter: blur(60px);
-            pointer-events: none;
+        .hero-text {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
         }
 
-        .slogan {
-            display: inline-block;
-            background: rgba(255, 255, 255, 0.03);
-            color: var(--text-muted);
-            padding: 8px 16px;
-            border-radius: 99px;
-            border: 1px solid var(--border-color);
-            font-size: 0.85rem;
-            font-weight: 500;
+        .eyebrow {
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--text-dark);
             text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin-bottom: 32px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .eyebrow::before {
+            content: '';
+            display: inline-block;
+            width: 24px;
+            height: 2px;
+            background-color: var(--text-blue);
         }
 
         .hero h1 {
-            font-size: clamp(3rem, 6vw, 5.5rem);
-            line-height: 1.05;
+            font-family: 'Oswald', sans-serif; /* Tipografía condensada gigante */
+            font-size: clamp(4rem, 7vw, 7.5rem);
+            line-height: 0.95;
+            text-transform: uppercase;
             font-weight: 700;
-            margin-bottom: 24px;
-            max-width: 900px;
-            letter-spacing: -0.04em;
-            
-            /* Texto con gradiente tipo Apple/Vercel */
-            background: linear-gradient(180deg, #ffffff 0%, #a1a1aa 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            color: transparent;
+            color: var(--text-dark);
+            margin-bottom: 32px;
+            letter-spacing: -1px;
+            text-wrap: balance;
+        }
+
+        .h1-blue {
+            color: var(--text-blue);
         }
 
         .hero p {
-            font-size: 1.25rem;
-            color: var(--text-muted);
-            margin-bottom: 48px;
-            max-width: 650px;
-            line-height: 1.6;
-            font-weight: 300;
+            font-size: 1.15rem;
+            color: var(--text-gray);
+            max-width: 500px;
+            margin-bottom: 40px;
+            line-height: 1.7;
         }
 
-        /* --- Servicios (Estilo Bento Grid) --- */
-        .servicios {
-            padding: 100px 0;
-            position: relative;
-            z-index: 2;
+        /* --- Botones --- */
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 40px;
         }
 
-        .servicios h2 {
-            font-size: clamp(2rem, 4vw, 3rem);
-            margin-bottom: 60px;
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            justify-content: center;
+            text-decoration: none;
+            padding: 16px 32px;
+            border-radius: 100px;
+            font-size: 1rem;
             font-weight: 600;
-            letter-spacing: -0.02em;
-            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
         }
 
+        .btn-primary {
+            background-color: var(--text-dark);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--text-blue);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: var(--white);
+            color: var(--text-dark);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--text-dark);
+            background-color: #f8fafc;
+        }
+
+        .location {
+            font-size: 0.85rem;
+            color: var(--text-gray);
+            font-weight: 500;
+        }
+
+        /* --- Hero Image (Arco) --- */
+        .hero-visual {
+            position: relative;
+            width: 100%;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .arch-container {
+            width: 100%;
+            max-width: 550px;
+            aspect-ratio: 3.5 / 4;
+            background-color: #e2e8f0; /* Fondo gris mientras carga la imagen */
+            /* La magia del borde en forma de arco (Tombstone) */
+            border-radius: 300px 300px 30px 30px; 
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+        }
+
+        .arch-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* Opcional: filtro blanco y negro para igualar tu referencia */
+            /* filter: grayscale(100%); */
+        }
+
+        .image-badge {
+            position: absolute;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 12px 24px;
+            border-radius: 100px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .badge-role {
+            color: var(--text-blue);
+        }
+
+        /* --- Ajustes para las secciones de abajo para mantener la coherencia --- */
+        .servicios { padding: 100px 24px; background: var(--white); }
+        .servicios-header { text-align: center; margin-bottom: 60px; }
+        .servicios h2 { font-family: 'Oswald', sans-serif; font-size: 3rem; text-transform: uppercase; color: var(--text-dark); }
+        
         .grid-servicios {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 24px;
+            gap: 32px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .card {
-            background-color: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 24px; /* Bordes más redondeados tipo app */
+            background: var(--bg-color);
             padding: 40px;
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-        }
-
-        /* Efecto de brillo interior (Glow) al pasar el mouse */
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
             border-radius: 24px;
-            background: radial-gradient(800px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255, 255, 255, 0.06), transparent 40%);
-            opacity: 0;
-            transition: opacity 0.4s;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        .card:hover {
-            border-color: rgba(255, 255, 255, 0.15);
-            transform: translateY(-5px);
-        }
-
-        .card:hover::before {
-            opacity: 1;
-        }
-
-        .card > * {
-            position: relative;
-            z-index: 1;
-        }
-
-        .card-icon {
-            font-size: 2.5rem;
-            margin-bottom: 24px;
-            background: rgba(255, 255, 255, 0.03);
-            width: 60px;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 16px;
             border: 1px solid var(--border-color);
+            transition: transform 0.3s ease;
         }
+        .card:hover { transform: translateY(-5px); }
+        .card-icon { font-size: 2.5rem; margin-bottom: 20px; }
+        .card h3 { font-size: 1.4rem; color: var(--text-dark); margin-bottom: 12px; }
+        .card p { color: var(--text-gray); font-size: 1rem; }
 
-        .card h3 {
-            font-size: 1.35rem;
-            color: var(--text-main);
-            margin-bottom: 16px;
-            font-weight: 600;
-            letter-spacing: -0.01em;
-        }
-
-        .card p {
-            color: var(--text-muted);
-            font-size: 1.05rem;
-            line-height: 1.6;
-            font-weight: 300;
-        }
-
-        /* --- Llamado a la Acción (CTA) --- */
-        .cta {
-            padding: 120px 0;
-            position: relative;
-        }
-
-        .cta-box {
-            background: linear-gradient(145deg, #111 0%, #050505 100%);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 32px;
-            padding: 80px 40px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        /* Brillo sutil en el CTA */
-        .cta-box::after {
-            content: '';
-            position: absolute;
-            top: -50%; right: -20%;
-            width: 400px; height: 400px;
-            background: var(--accent-glow);
-            filter: blur(80px);
-            border-radius: 50%;
-            pointer-events: none;
-        }
-
-        .cta-box h2 {
-            font-size: clamp(2rem, 4vw, 3rem);
-            margin-bottom: 20px;
-            font-weight: 700;
-            letter-spacing: -0.03em;
-        }
-
-        .cta-box p {
-            font-size: 1.15rem;
-            color: var(--text-muted);
-            margin-bottom: 40px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-            font-weight: 300;
-        }
-
-        /* --- Footer --- */
-        .footer {
-            border-top: 1px solid var(--border-color);
-            padding: 60px 0;
-            text-align: center;
-            background: var(--bg-main);
-        }
-
-        .footer-brand {
-            font-size: 1.5rem;
-            font-weight: 700;
-            letter-spacing: 1px;
-            margin-bottom: 16px;
-            color: var(--text-main);
-        }
-
-        .footer p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            margin-bottom: 8px;
-        }
-
-        .footer a {
-            color: var(--text-main);
-            text-decoration: none;
-            transition: color 0.3s ease;
-            font-weight: 500;
-            border-bottom: 1px solid rgba(255,255,255,0.2);
-            padding-bottom: 2px;
-        }
-
-        .footer a:hover {
-            color: var(--accent);
-            border-color: var(--accent);
-        }
-
-        /* --- Animaciones de aparición --- */
-        .fade-in-up {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
-        }
-
-        .fade-in-up.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .delay-1 { transition-delay: 0.1s; }
-        .delay-2 { transition-delay: 0.2s; }
-        .delay-3 { transition-delay: 0.3s; }
+        /* --- Footer básico adaptado --- */
+        .footer { background: var(--text-dark); color: var(--white); padding: 60px 24px; text-align: center; }
+        .footer a { color: var(--text-blue); text-decoration: none; }
 
         /* --- Responsive --- */
+        @media (max-width: 1024px) {
+            .hero h1 { font-size: clamp(3.5rem, 6vw, 5rem); }
+            .nav-links { display: none; } /* Ocultamos links en tablet/móvil para simplificar */
+        }
+
         @media (max-width: 768px) {
-            .hero { padding: 180px 0 80px 0; }
-            .hero p { font-size: 1.1rem; }
-            .cta-box { padding: 60px 24px; border-radius: 24px; }
-            .grid-servicios { grid-template-columns: 1fr; }
-            .btn { width: 100%; margin-bottom: 16px; }
-            .navbar-wrapper { padding: 0 16px; top: 16px; }
-            .navbar { width: 100%; justify-content: center; } /* Centramos el logo en móvil */
+            .hero {
+                grid-template-columns: 1fr;
+                padding: 140px 24px 60px;
+                text-align: center;
+            }
+            .hero-text { align-items: center; }
+            .eyebrow { justify-content: center; }
+            .eyebrow::before { display: none; }
+            .hero p { text-align: center; }
+            .hero-buttons { flex-direction: column; width: 100%; }
+            .btn { width: 100%; }
+            .hero-visual { justify-content: center; margin-top: 40px; }
         }
     </style>
 </head>
 <body>
 
-    <div class="navbar-wrapper">
+    <!-- HEADER / NAVBAR -->
+    <div class="header-wrapper">
         <nav class="navbar">
-            <a href="#" class="nav-logo">ARMOIN</a>
+            <a href="#" class="nav-logo">ARMOIN.</a>
+            
+            <div class="nav-links">
+                <a href="#servicios">Servicios</a>
+                <a href="#">Proyectos</a>
+                <a href="#">Contacto</a>
+            </div>
+
+            <div class="nav-status">
+                <span class="status-dot"></span> Disponible
+            </div>
         </nav>
     </div>
 
+    <!-- HERO SECTION -->
     <section class="hero">
-        <div class="container fade-in-up">
-            <span class="slogan">Tu partner de confianza</span>
-            <h1>Hacé crecer tu negocio en el mundo digital sin complicaciones</h1>
-            <p>Sabemos que dar el salto digital o destrabar tus ventas puede ser un desafío. Desde Córdoba Capital te acompañamos con estrategias claras para que logres vender más y llegar a tu cliente ideal.</p>
-            <a href="https://wa.me/5493510000000?text=Hola%20ARMOIN!%20Vengo%20de%20la%20web%20y%20quiero%20hacer%20crecer%20mi%20negocio." class="btn btn-primario" target="_blank" rel="noopener noreferrer">
-                Escribinos por WhatsApp
-            </a>
-        </div>
-    </section>
-
-    <section class="servicios" id="servicios">
-        <div class="container">
-            <h2 class="fade-in-up">Nuestros Servicios</h2>
-            <div class="grid-servicios">
-                
-                <div class="card fade-in-up delay-1">
-                    <div class="card-icon">🛒</div>
-                    <h3>Desarrollo de tiendas online</h3>
-                    <p>Diseñamos y programamos tu sucursal digital. Creamos plataformas fáciles de administrar, seguras y enfocadas en brindar la mejor experiencia de compra a tus clientes las 24 horas.</p>
-                </div>
-
-                <div class="card fade-in-up delay-2">
-                    <div class="card-icon">📈</div>
-                    <h3>Configuración de Anuncios</h3>
-                    <p>Optimizamos tu presupuesto publicitario. Armamos y gestionamos campañas en Google y redes sociales para que aparezcas justo cuando tu público objetivo busca lo que ofrecés.</p>
-                </div>
-
-                <div class="card fade-in-up delay-3">
-                    <div class="card-icon">📱</div>
-                    <h3>Edición de contenido</h3>
-                    <p>Potenciamos la imagen de tu marca. Editamos piezas gráficas y audiovisuales profesionales que conectan con tu audiencia y te diferencian de la competencia.</p>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <section class="cta">
-        <div class="container fade-in-up">
-            <div class="cta-box">
-                <h2>Trabajemos en equipo</h2>
-                <p>Creemos en la atención 100% personalizada. Escuchamos tus necesidades, analizamos tu negocio y creamos un plan de acción a tu medida. ¿Listo para dar el próximo paso?</p>
-                <a href="https://wa.me/5493510000000?text=Hola!%20Me%20interesa%20tener%20una%20reunión%20para%20trabajar%20juntos." class="btn btn-secundario" target="_blank" rel="noopener noreferrer">
-                    Contactanos por WhatsApp
+        <div class="hero-text">
+            <span class="eyebrow">Consultora de E-commerce · Diseño</span>
+            
+            <!-- H1 con Tipografía gigante estilo cartel y palabras resaltadas en azul -->
+            <h1>
+                HACÉ CRECER <br>
+                <span class="h1-blue">TU NEGOCIO</span> EN <br>
+                EL MUNDO DIGITAL.
+            </h1>
+            
+            <p>
+                Soy [Tu Nombre/ARMOIN]. Sabemos que dar el salto digital o destrabar tus ventas puede ser un desafío. Te acompañamos con estrategias para que logres llegar a tu cliente ideal.
+            </p>
+            
+            <div class="hero-buttons">
+                <a href="https://wa.me/5493510000000" class="btn btn-primary" target="_blank">
+                    Hablemos ↗
+                </a>
+                <a href="#servicios" class="btn btn-secondary">
+                    Ver servicios ↓
                 </a>
             </div>
+
+            <span class="location">Córdoba, Argentina</span>
+        </div>
+
+        <div class="hero-visual">
+            <!-- Contenedor con forma de Arco -->
+            <div class="arch-container">
+                <!-- REEMPLAZA ESTE LINK POR TU FOTO -->
+                <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="ARMOIN">
+                
+                <!-- Etiqueta inferior flotante (Glassmorphism) -->
+                <div class="image-badge">
+                    <span>ARMOIN</span>
+                    <span class="badge-role">Consultora Digital</span>
+                </div>
+            </div>
         </div>
     </section>
 
-    <footer class="footer">
-        <div class="container fade-in-up">
-            <div class="footer-brand">ARMOIN</div>
-            <p>Consultora de E-commerce y Diseño en Córdoba Capital</p>
-            <p>Seguinos en <a href="https://instagram.com/armoin" target="_blank" rel="noopener noreferrer">Instagram</a></p>
+    <!-- SECCIÓN SERVICIOS (Adaptada al nuevo diseño claro) -->
+    <section class="servicios" id="servicios">
+        <div class="servicios-header">
+            <h2>SERVICIOS</h2>
         </div>
+        <div class="grid-servicios">
+            <div class="card">
+                <div class="card-icon">🛒</div>
+                <h3>Desarrollo de tiendas online</h3>
+                <p>Diseñamos y programamos tu sucursal digital enfocadas en brindar la mejor experiencia de compra a tus clientes las 24 horas.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">📈</div>
+                <h3>Anuncios (SEM)</h3>
+                <p>Armamos y gestionamos campañas en Google y redes sociales para que aparezcas justo cuando tu público objetivo te busca.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">📱</div>
+                <h3>Edición de contenido</h3>
+                <p>Editamos piezas gráficas y audiovisuales profesionales que conectan con tu audiencia y te diferencian de la competencia.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p>ARMOIN | Consultora de E-commerce y Diseño en Córdoba Capital</p>
+        <p>Seguinos en <a href="#">Instagram</a></p>
     </footer>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            // Animación de Scroll para la Navbar (hace que se encoja sutilmente)
-            const navbar = document.querySelector('.navbar');
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 50) {
-                    navbar.style.padding = '10px 24px';
-                    navbar.style.background = 'rgba(5, 5, 5, 0.8)';
-                } else {
-                    navbar.style.padding = '12px 32px';
-                    navbar.style.background = 'var(--glass-bg)';
-                }
-            });
-
-            // Intersection Observer (Para el efecto fade-in al scrollear)
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: "0px 0px -50px 0px" 
-            };
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                        observer.unobserve(entry.target); 
-                    }
-                });
-            }, observerOptions);
-
-            const animElements = document.querySelectorAll('.fade-in-up');
-            animElements.forEach((el) => {
-                observer.observe(el);
-            });
-
-            // Efecto Spotlight (Brillo que sigue al mouse en las tarjetas)
-            document.querySelectorAll('.card').forEach(card => {
-                card.addEventListener('mousemove', e => {
-                    const rect = card.getBoundingClientRect();
-                    const x = e.clientX - rect.left;
-                    const y = e.clientY - rect.top;
-                    card.style.setProperty('--mouse-x', `${x}px`);
-                    card.style.setProperty('--mouse-y', `${y}px`);
-                });
-            });
-        });
-    </script>
 </body>
 </html>
